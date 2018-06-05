@@ -8,9 +8,12 @@ class Find(private val parser: Parser): Parser {
     override fun parse(target: String): Result {
         val stringBuilder = StringBuilder(target)
         for (i in 0 until stringBuilder.length) {
-            val result = parser.parse(stringBuilder.substring(i, stringBuilder.length))
-            if (result.succeeded) return result
+            try {
+                return parser.parse(stringBuilder.substring(i, stringBuilder.length))
+            } catch (exception: ParserException) {
+                //do nothing
+            }
         }
-        return Result.fail()
+        throw ParserException("Expect find $target, but find nothing")
     }
 }

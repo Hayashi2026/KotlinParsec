@@ -13,10 +13,4 @@ class DigitTest {
         assertEquals(result, Result.success("4", "56"))
     }
 
-    @Test
-    fun parseFail() {
-        val digit = Digit()
-        val result = digit.parse("a456")
-        assertEquals(result, Result.fail())
-    }
 }

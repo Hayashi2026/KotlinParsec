@@ -1,9 +1,10 @@
 package com.morimi.parsec
 
-class Integer: Parser {
-    private val parser = OneOrMany(32, Digit())
+class Int: Parser {
 
     override fun parse(target: String): Result {
-        return parser.parse(target)
+        val negative = SEQ(Ch('-'), OneOrMany(Digit()))
+        val positive = OneOrMany(Digit())
+        return OR(positive, negative).parse(target)
     }
 }

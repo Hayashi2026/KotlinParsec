@@ -3,10 +3,16 @@ package com.morimi.parsec
 class OR(private val parser1: Parser, private val parser2: Parser): Parser {
 
     override fun parse(target: String): Result {
-        val result = parser1.parse(target)
-        if (result.succeeded) {
-            return result
+        try {
+            return parser1.parse(target)
+        } catch (exception: ParserException) {
+            //do nothing
         }
-        return parser2.parse(target)
+        try {
+            return parser2.parse(target)
+        } catch (exception: ParserException) {
+            //do nothing
+        }
+        throw ParserException("Except $target can be parsed by $parser1 or $parser2")
     }
 }

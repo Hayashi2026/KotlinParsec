@@ -6,6 +6,6 @@ class NotEqual(private val text: String): Parser {
         if(text != target) {
             return Result.success(text, "")
         }
-        return Result.fail()
+        throw ParserException("Expect $target not equals $text-")
     }
 }

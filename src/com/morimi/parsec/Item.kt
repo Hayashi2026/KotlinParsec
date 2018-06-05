@@ -5,6 +5,6 @@ class Item: Parser {
         if (target.isNotEmpty()) {
             return Result.success(target.substring(0, 1), target.substring(1))
         }
-        return Result.fail()
+        throw ParserException("Expect $target is not empty")
     }
 }

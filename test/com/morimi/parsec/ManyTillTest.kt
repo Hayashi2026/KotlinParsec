@@ -8,7 +8,7 @@ class ManyTillTest {
 
     @Test
     fun parse() {
-        val manyTill = ManyTill(Text("hello"), Character('a'))
+        val manyTill = ManyTill(Text("hello"), Ch('a'))
         val result = manyTill.parse("hellohellohelloabbbb")
         assertEquals(result, Result.success("hellohellohelloa", "bbbb"))
     }

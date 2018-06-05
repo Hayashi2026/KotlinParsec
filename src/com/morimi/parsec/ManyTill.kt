@@ -3,17 +3,16 @@ package com.morimi.parsec
 class ManyTill(private val parser: Parser, private val end: Parser): Parser {
 
     override fun parse(target: String): Result {
-        var tempTarget = target
-        var result = Result("", "", true)
+        var pre = Result.success("", "")
+        var parsing = target
         while (true) {
-            val endResult = end.parse(tempTarget)
-            if (endResult.succeeded) return Result.concat(result, endResult)
-            val nextResult = parser.parse(tempTarget)
-            if (!nextResult.succeeded) {
-                return Result.fail()
+            try {
+                return Result.concat(pre, end.parse(parsing))
+            } catch (exception: ParserException) {
+                val result = parser.parse(parsing)
+                pre = Result.concat(pre, result)
+                parsing = result.remain
             }
-            tempTarget = nextResult.remain
-            result = Result.concat(result, nextResult)
         }
     }
 }

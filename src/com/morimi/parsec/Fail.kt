@@ -1,8 +1,8 @@
 package com.morimi.parsec
 
-class Fail: Parser {
+class Fail(val msg: String): Parser {
 
     override fun parse(target: String): Result {
-        return Result.fail()
+        throw ParserException(msg)
     }
 }

@@ -13,11 +13,4 @@ class ItemTest {
         assertEquals(result, Result.success("t", "est"))
     }
 
-    @Test
-    fun parseEmpty() {
-        val item = Item()
-        val result = item.parse("")
-        assertEquals(result, Result.fail())
-    }
-
 }

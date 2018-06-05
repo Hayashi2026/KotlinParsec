@@ -6,6 +6,6 @@ class Text(private val text: String): Parser {
         if (target.startsWith(text)) {
             return Result.success(text, target.substring(text.length, target.length))
         }
-        return Result.fail()
+        throw ParserException("Except $target startWith $text")
     }
 }

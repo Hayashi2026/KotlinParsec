@@ -8,7 +8,7 @@ class FindTest {
 
     @Test
     fun parseChar() {
-        val find = Find(Character('c'))
+        val find = Find(Ch('c'))
         val result = find.parse("hdkkkkiooicjjj")
         assertEquals(result, Result.success("c", "jjj"))
     }

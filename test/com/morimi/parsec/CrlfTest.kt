@@ -13,10 +13,4 @@ class CrlfTest {
         assertEquals(result, Result.success("\r\n", ""))
     }
 
-    @Test
-    fun parseFail() {
-        val ctrl = Crlf()
-        val result = ctrl.parse("test\r\n")
-        assertEquals(result, Result.fail())
-    }
 }

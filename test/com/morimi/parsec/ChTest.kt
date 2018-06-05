@@ -4,19 +4,22 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
-class CharacterTest {
+class ChTest {
 
     @Test
     fun parse() {
-        val character = Character('c')
+        val character = Ch('c')
         val result = character.parse("chat")
         assertEquals(result, Result.success("c", "hat"))
     }
 
     @Test
     fun parseFail() {
-        val character = Character('c')
-        val result = character.parse("test")
-        assertEquals(result, Result.fail())
+        try {
+            val character = Ch('c')
+            character.parse("test")
+        } catch (exception: Exception) {
+            assert(exception is ParserException)
+        }
     }
 }

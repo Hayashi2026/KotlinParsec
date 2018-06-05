@@ -1,19 +1,15 @@
 package com.morimi.parsec
 
-data class Result(var recognized: String, var remain: String, var succeeded: Boolean) {
+data class Result(var recognized: String, var remain: String) {
 
     companion object {
 
         fun success(recognized: String, remain: String): Result {
-            return Result(recognized, remain, true)
-        }
-
-        fun fail(): Result {
-            return Result("", "", false)
+            return Result(recognized, remain)
         }
 
         fun concat(result1: Result, result2: Result): Result {
-            return Result(result1.recognized + result2.recognized, result2.remain, true)
+            return Result(result1.recognized + result2.recognized, result2.remain)
         }
     }
 }

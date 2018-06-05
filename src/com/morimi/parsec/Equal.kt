@@ -6,6 +6,6 @@ class Equal(private val text: String): Parser {
         if(text == target) {
             return Result.success(target, "")
         }
-        return Result.fail()
+        throw ParserException("Expect $target equals $text")
     }
 }
