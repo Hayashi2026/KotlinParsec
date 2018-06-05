@@ -1,13 +1,17 @@
 package com.morimi.parsec
 
-class OneOf(val set: Set<String>) : Parser {
+class OneOf(private vararg val parsers: Parser): Parser {
 
     override fun parse(target: String): Result {
-        for (item in set) {
-            if (target.startsWith(item)) {
-                return Result.success(item, target.substring(item.length, target.length))
+        for (parser in parsers) {
+            try {
+                return parser.parse(target)
+            } catch (e: ParserException) {
+                //do nothing
+
             }
+
         }
-        throw ParserException("Expect target start with one of $set")
+        throw ParserException("none of the parsers can parse $target")
     }
 }

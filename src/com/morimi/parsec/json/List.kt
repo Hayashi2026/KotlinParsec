@@ -1,4 +1,9 @@
-package com.morimi.parsec
+package com.morimi.parsec.json
+
+import com.morimi.parsec.And
+import com.morimi.parsec.Many
+import com.morimi.parsec.Parser
+import com.morimi.parsec.Result
 
 class List(private val parser: Parser, private val separator: Parser): Parser {
 
