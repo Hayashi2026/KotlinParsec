@@ -8,7 +8,6 @@ class OneOf(private vararg val parsers: Parser): Parser {
                 return parser.parse(target)
             } catch (e: ParserException) {
                 //do nothing
-
             }
 
         }

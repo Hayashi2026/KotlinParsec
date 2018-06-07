@@ -4,14 +4,15 @@ class OneOrMany(private val parser: Parser) : Parser {
 
     override fun parse(target: String): Result {
         var pre = parser.parse(target)
-        while (true) {
-            try {
+        try {
+            while (true) {
                 val result = parser.parse(pre.remain)
                 pre = Result.concat(pre, result)
-            } catch (e: ParserException) {
-                return pre
             }
+        } catch (e: ParserException) {
+            //do nothing
         }
+        return pre
     }
 
 }

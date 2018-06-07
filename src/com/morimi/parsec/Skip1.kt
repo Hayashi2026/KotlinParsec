@@ -1,12 +1,12 @@
 package com.morimi.parsec
 
 /**
- * 匹配至少0次
+ * 至少跳过1次
  */
-class Many(private val parser: Parser) : Parser {
+class Skip1(private val parser: Parser): Parser {
 
     override fun parse(target: String): Result {
-        var pre = Result.success("", target)
+        var pre = parser.parse(target)
         try {
             while (true) {
                 val result = parser.parse(pre.remain)

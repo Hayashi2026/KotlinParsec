@@ -1,9 +1,9 @@
 package com.morimi.parsec
 
 /**
- * 匹配至少0次
+ * 跳过匹配0到多次
  */
-class Many(private val parser: Parser) : Parser {
+class Skip(private val parser: Parser) : Parser {
 
     override fun parse(target: String): Result {
         var pre = Result.success("", target)
