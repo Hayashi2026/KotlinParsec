@@ -10,4 +10,8 @@ class Ch(private val character: Char): Parser {
         }
         throw ParserException("Expect ${result.recognized} == $character while parsing \"$target\"")
     }
+
+    override fun toString(): String {
+        return "Character \"$character\" parser"
+    }
 }

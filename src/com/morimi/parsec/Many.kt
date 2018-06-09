@@ -14,7 +14,12 @@ class Many(private val parser: Parser) : Parser {
             }
         } catch (e: ParserException) {
             //do nothing
+            println("throw exception while $parser parse ${target.substring(0, if (target.length > 30) 30 else target.length)}")
         }
         return pre
+    }
+
+    override fun toString(): String {
+        return this.javaClass.simpleName
     }
 }

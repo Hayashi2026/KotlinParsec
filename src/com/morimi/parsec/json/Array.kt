@@ -1,9 +1,6 @@
 package com.morimi.parsec.json
 
-import com.morimi.parsec.Between
-import com.morimi.parsec.Ch
-import com.morimi.parsec.Parser
-import com.morimi.parsec.Result
+import com.morimi.parsec.*
 
 class Array: Parser {
 
@@ -12,6 +9,7 @@ class Array: Parser {
         val endArray = Ch(']')
         val comma = Ch(',')
         val values = List(Json(), comma)
-        return Between(beginArray, values, endArray).parse(target)
+        val emptyArray = Between(beginArray, Text(""), endArray)
+        return Between(beginArray, OR(values, Text("")), endArray).parse(target)
     }
 }

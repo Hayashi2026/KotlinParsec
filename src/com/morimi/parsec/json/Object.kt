@@ -12,6 +12,7 @@ class Object : Parser {
         val keyAndColon = SEQ(QuotedString(), colon)
         val keyValue = SEQ(keyAndColon, Json())
         val keyValueList = List(keyValue, comma)
-        return Between(beginObject, keyValueList, endObject).parse(target)
+        val emptyObject = Between(beginObject, Text(""), endObject)
+        return Between(beginObject, OR(keyValueList, Text("")), endObject).parse(target)
     }
 }

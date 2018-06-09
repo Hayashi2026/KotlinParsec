@@ -7,4 +7,8 @@ class Item: Parser {
         }
         throw ParserException("Expect $target is not empty")
     }
+
+    override fun toString(): String {
+        return this.javaClass.simpleName
+    }
 }

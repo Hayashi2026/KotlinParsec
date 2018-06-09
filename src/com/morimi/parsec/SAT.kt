@@ -7,6 +7,6 @@ class SAT(var pre: Predicate, var parser: Parser): Parser {
         if (pre.satisfy(result.recognized)) {
             return result
         }
-        throw ParserException("Except ${result.recognized} satisfy Predicate $pre")
+        throw ParserException("Expect ${result.recognized} satisfy Predicate $pre")
     }
 }

@@ -8,4 +8,8 @@ class Between(private val leftParser: Parser, private val middleParser: Parser, 
         val rightResult = rightParser.parse(middleResult.remain)
         return Result.success(middleResult.recognized, rightResult.remain)
     }
+
+    override fun toString(): String {
+        return this.javaClass.simpleName + " " + leftParser.toString() + " " + middleParser.toString() + " " + rightParser
+    }
 }
