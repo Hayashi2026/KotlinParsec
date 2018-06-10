@@ -10,17 +10,6 @@ import org.junit.Assert.*
 
 class QuotedStringTest {
 
-    @Test
-    fun parseExceptCharacter() {
-        val exceptCharacter = NoneOf(EscapeCharacter(), Ch('\u0022'), Ch('\u005C'))
-        try {
-            val result = exceptCharacter.parse("\u0022")
-            assert(false)
-        } catch (e: ParserException) {
-            assert(true)
-        }
-
-    }
 
     @Test
     fun parse() {

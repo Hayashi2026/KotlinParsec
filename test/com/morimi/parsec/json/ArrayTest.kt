@@ -7,6 +7,8 @@ import org.junit.Assert.*
 
 class ArrayTest {
 
+    val str = "\"dddd\""
+
     @Test
     fun parse() {
         val array = Array()

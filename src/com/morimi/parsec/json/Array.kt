@@ -9,7 +9,7 @@ class Array: Parser {
         val endArray = Ch(']')
         val comma = Ch(',')
         val values = List(Json(), comma)
-        val emptyArray = Between(beginArray, Text(""), endArray)
         return Between(beginArray, OR(values, Text("")), endArray).parse(target)
     }
+
 }
